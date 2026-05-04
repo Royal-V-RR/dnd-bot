@@ -13,25 +13,34 @@ jobs:
     timeout-minutes: 355
 
     steps:
-- name: Checkout repository
-  uses: actions/checkout@v4
-  with:
-    token: ${{ secrets.GH_TOKEN }}
-    fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0
 
-- name: Configure Git
-  run: |
-    git config user.name "DnD Bot"
-    git config user.email "dnd-bot@github-actions"
-    git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/Royal-V-RR/dnd-bot.git
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-- name: Run bot (6 hours)
-  env:
-    DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-    CLIENT_ID: '1500567588214673498'
-    GH_TOKEN: ${{ secrets.GH_TOKEN }}
-    GH_REPO: Royal-V-RR/dnd-bot
-    CAMPAIGN_DIR: campaigns
+      - name: Install dependencies
+        run: npm install
+
+      - name: Configure Git
+        run: |
+          git config user.name "DnD Bot"
+          git config user.email "dnd-bot@github-actions"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/Royal-V-RR/dnd-bot.git
+
+      - name: Run bot (6 hours)
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          CLIENT_ID: '1500567588214673498'
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: Royal-V-RR/dnd-bot
+          CAMPAIGN_DIR: campaigns
         run: |
           timeout 21300 node index.cjs || true
 
