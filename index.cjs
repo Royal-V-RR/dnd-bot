@@ -193,7 +193,7 @@ const CONDITION_DESC = {
   Poisoned:      '• **Disadvantage** on attack rolls and ability checks',
   Prone:         '• Only movement: crawling (costs double)\n• **Disadv** on attacks\n• Melee attacks have **adv** · ranged have **disadv**',
   Restrained:    '• Speed **0** · disadv on attacks · adv attacks vs it\n• **Disadv** on DEX saves',
-  Stunned:       '• Incapacitated, can't move, can barely speak\n• Auto-fails STR/DEX saves · attackers have **adv**',
+  Stunned:       '• Incapacitated, cant move, can barely speak\n• Auto-fails STR/DEX saves · attackers have **adv**',
   Unconscious:   '• Incapacitated, prone, unaware\n• Auto-fails STR/DEX saves\n• Hits within 5ft are **critical**',
 };
 
