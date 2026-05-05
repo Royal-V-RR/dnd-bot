@@ -3413,4 +3413,4 @@ async function handleSlashCommand(interaction) {
 // ───────────────────────────────────────────────────────────────
 //  LOGIN
 // ───────────────────────────────────────────────────────────────
-client.login(TOKEN);
+client.login(process.env.DISCORD_TOKEN);
